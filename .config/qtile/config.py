@@ -1,29 +1,11 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
+ #      _            _ _     _            
+ #     | |          (_) |   | |           
+ #   __| | _____   ___| | __| | _____   __
+ #  / _` |/ _ \ \ / / | |/ _` |/ _ \ \ / /
+ # | (_| |  __/\ V /| | | (_| |  __/\ V / 
+ #  \__,_|\___| \_/ |_|_|\__,_|\___| \_/  
+ #
+ # 
 # -*- coding: utf-8 -*-
 import os
 import re
@@ -59,7 +41,7 @@ def dbus_register():
 ###################################################################
 
 mod = "mod4"
-terminal = "gnome-terminal"
+terminal = guess_terminal()
 
 keys = [
     # Switch between windows
@@ -102,23 +84,21 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-
+    # open firefox
+    Key([mod], "f", lazy.spawn("firefox"), desc="Open firefox"),
+    
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("dmenu_run -p 'Run: '"),
+    Key([mod], "r", lazy.spawn("rofi -show run"),
         desc="Spawn a command using a prompt widget"),
 ]
 
 
-group_names = [("WWW", {'layout': 'monadtall'}),
-               ("DEV", {'layout': 'monadtall'}),
-               ("SYS", {'layout': 'monadtall'}),
-               ("DOC", {'layout': 'monadtall'}),
-               ("VBOX", {'layout': 'monadtall'}),
-               ("CHAT", {'layout': 'monadtall'}),
-               ("MUS", {'layout': 'monadtall'}),
-               ("VID", {'layout': 'floating'}),
-               ("GFX", {'layout': 'floating'})]
+group_names = [(" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -175,12 +155,16 @@ colors = [["#282c34", "#282c34"], # panel background
 
 ####### Default Widget settings ################
 widget_defaults = dict(
-    font="Ubuntu Mono",
+    font="Hack Nerd Font",
     fontsize = 12,
     padding = 2,
     background=colors[2]
 )
 extension_defaults = widget_defaults.copy()
+
+###### Mouse callbacks ##########
+def shutdown(qtile):
+	qtile.cmd_shutdown()
 
 def init_widgets_list():
     widgets_list = [
@@ -190,15 +174,16 @@ def init_widgets_list():
                        foreground = colors[2],
                        background = colors[0]
                        ),
-              # widget.Image(
-              #          filename = "~/.config/qtile/icons/python.png",
-              #          mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('dmenu_run')}
-              #          ),
+              widget.Image(
+                       filename = "~/.config/qtile/icons/python.png",
+                       padding= 7,
+                       # mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('rod')},
+                       ),
               widget.GroupBox(
                        font = "Ubuntu Bold",
-                       fontsize = 9,
+                       fontsize = 20,
                        margin_y = 3,
-                       margin_x = 0,
+                       margin_x = 10,
                        padding_y = 5,
                        padding_x = 3,
                        borderwidth = 3,
@@ -231,101 +216,90 @@ def init_widgets_list():
                        background = colors[0],
                        padding = 0
                        ),
-              # widget.TextBox(
-              #          text = "--",
-              #          background = colors[0],
-              #          foreground = colors[4],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
-              # widget.TextBox(
-              #          text="--",
-              #          background = colors[5],
-              #          foreground = colors[4],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
-              # widget.TextBox(
-              #          text = "--",
-              #          foreground = colors[2],
-              #          background = colors[5],
-              #          padding = 0,
-              #          fontsize = 14
-              #          ),
+              widget.TextBox(
+                       text = " 🖬",
+                       foreground = colors[2],
+                       background = colors[5],
+                       padding = 0,
+                       fontsize = 14
+                       ),
+
               widget.Memory(
                        foreground = colors[2],
                        background = colors[5],
-                       # mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
+                       mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
                        padding = 5
                        ),
-              # widget.TextBox(
-              #          text="--",
-              #          background = colors[5],
-              #          foreground = colors[4],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
+              widget.TextBox(
+                       text='',
+                       background = colors[4],
+                       foreground = colors[2],
+                       padding = 7,
+                       fontsize = 15
+                       ),              
               widget.Net(
                        # interface = "enp6s0",
-                       format = '{down} ↓↑ {up}',
+                       format = '{down}',
                        foreground = colors[2],
                        background = colors[4],
                        padding = 5
                        ),
-              # widget.TextBox(
-              #          text = '--',
-              #          background = colors[4],
-              #          foreground = colors[5],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
               widget.TextBox(
-                      text = " Vol:",
+		              	text = '',
+		              	foreground = colors[2],
+		              	background = colors[5],
+		              	padding = 7,
+		              	fontsize= 15,
+		              	),
+              widget.Volume(          
                        foreground = colors[2],
                        background = colors[5],
-                       padding = 0
+                       padding = 5,
                        ),
-              widget.Volume(
+              widget.BatteryIcon(
+		              	foreground = colors[2],
+		              	background = colors[4],
+		              	padding = 0,
+		              	fontsize = 15,
+		              	update_interval = 1,
+              	),
+              # widget.TextBox(
+		            #   	text = 'Battery',
+		            #   	foreground = colors[2],
+		            #   	background = colors[4],
+		            #   	padding = 5,
+		            #   	fontsize= 15,
+		            #   	),
+              widget.CurrentLayoutIcon(
+                       custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                       foreground = colors[0],
+                       background = colors[5],
+                       padding = 0,
+                       scale = 0.7
+                       ),
+              widget.CurrentLayout(
                        foreground = colors[2],
                        background = colors[5],
                        padding = 5
                        ),
-              # widget.TextBox(
-              #          text = '--',
-              #          background = colors[5],
-              #          foreground = colors[4],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
-              # widget.CurrentLayoutIcon(
-              #          custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-              #          foreground = colors[0],
-              #          background = colors[4],
-              #          padding = 0,
-              #          scale = 0.7
-              #          ),
-              # widget.CurrentLayout(
-              #          foreground = colors[2],
-              #          background = colors[4],
-              #          padding = 5
-              #          ),
               widget.QuickExit(
-		               background = colors[4],
-                       foreground = colors[2],
-                       padding = 0,
+                      background = colors[4],
+                      foreground = colors[2],
+                      padding = 0,
                        ),
-              # widget.TextBox(
-              #          text = '--',
-              #          background = colors[4],
-              #          foreground = colors[5],
-              #          padding = 0,
-              #          fontsize = 37
-              #          ),
               widget.Clock(
                        foreground = colors[2],
                        background = colors[5],
-                       format = "%A, %B %d  [ %H:%M ]"
+                       format = "%A   %d %b   %I:%M %p"
                        ),
+              # widget.TextBox(
+		            #   	text = '',
+		            #   	foreground = colors[2],
+		            #   	background = colors[4],
+		            #   	padding = 7,
+		            #   	fontsize= 15,
+		            #   	mouse_callbacks = {'Button1': shutdown},
+		            #   	),
               widget.Sep(
                        linewidth = 0,
                        padding = 10,
@@ -338,10 +312,10 @@ def init_widgets_list():
                        ),
               ]
     return widgets_list
-  
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_list(), opacity=1.0, size=20))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_list(), opacity=1.0, 
+      size=25))]
 
 
 if __name__ in ["config", "__main__"]:
@@ -359,8 +333,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-main = None  # WARNING: this is deprecated and will be removed soon
-follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[

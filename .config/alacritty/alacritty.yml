@@ -1,3 +1,12 @@
+ #      _            _ _     _            
+ #     | |          (_) |   | |           
+ #   __| | _____   ___| | __| | _____   __
+ #  / _` |/ _ \ \ / / | |/ _` |/ _ \ \ / /
+ # | (_| |  __/\ V /| | | (_| |  __/\ V / 
+ #  \__,_|\___| \_/ |_|_|\__,_|\___| \_/  
+ #
+ # 
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -100,55 +109,25 @@ window:
   #multiplier: 3
 
 # Font configuration
-#font:
-  # Normal (roman) font face
-  #normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
-    #family: monospace
+font:
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
 
-    # The `style` can be specified to pick a specific face.
-    #style: Regular
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
 
-  # Bold font face
-  #bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
+  italic:
+    family: "Hack Nerd Font"
+    style: Italic
 
-    # The `style` can be specified to pick a specific face.
-    #style: Bold
-
-  # Italic font face
-  #italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Italic
-
-  # Bold italic font face
-  #bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+  bold_italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
 
   # Point size
-  #size: 11.0
+  # size: 15.0
 
   # Offset is the extra space aroud each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -356,7 +335,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.9
 
 #selection:
   # This string contains all characters that are used as separators for
