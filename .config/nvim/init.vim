@@ -1,14 +1,3 @@
-"      _            _ _     _            
-"     | |          (_) |   | |           
-"   __| | _____   ___| | __| | _____   __
-"  / _` |/ _ \ \ / / | |/ _` |/ _ \ \ / /
-" | (_| |  __/\ V /| | | (_| |  __/\ V / 
-"  \__,_|\___| \_/ |_|_|\__,_|\___| \_/  
-"
-" 
-
-
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -27,6 +16,7 @@ Plugin 'itchyny/lightline.vim'                       " Lightline statusbar
 Plugin 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
 Plugin 'vim-python/python-syntax'                    " Python highlighting
 Plugin 'ap/vim-css-color'                            " Color previews for CSS
+Plugin 'preservim/nerdtree'                          " nerd tree file view
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -53,6 +43,7 @@ set number relativenumber       " Display line numbers
 set clipboard=unnamedplus       " Copy/paste between vim and other programs.
 syntax enable
 let g:rehash256 = 1
+let mapleader = " "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Remap Keys
@@ -65,9 +56,18 @@ let g:rehash256 = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " The lightline.vim theme
 let g:lightline = {
-      \ 'colorscheme': 'darcula',
+      \ 'colorscheme': 'jellybeans',
       \ }
-
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 " Always show statusline
 set laststatus=2
 
@@ -87,13 +87,13 @@ set tabstop=4                   " One tab == four spaces.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=38
+let g:NERDTreeWinSize=30
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Theming
@@ -146,14 +146,14 @@ highlight Function         ctermfg=1    ctermbg=none    cterm=none
 " => Vim-Instant-Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:instant_markdown_autostart = 0         " Turns off auto preview
-let g:instant_markdown_browser = "surf"      " Uses surf for preview
+let g:instant_markdown_browser = "firefox --new-window" " Uses surf for preview
 map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Open terminal inside Vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <Leader>tt :vnew term://fish<CR>
+map <Leader>tt :vnew term://fish<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mouse Scrolling
