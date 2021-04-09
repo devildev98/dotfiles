@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/usr'
-let g:netrw_dirhist_2='/etc/xdg'
-let g:netrw_dirhist_1='/etc/xdg/Xwayland-session.d'

@@ -37,7 +37,7 @@ It is a window-manager written in `lua` programming language, it is highly custo
 $ sudo apt install awesome
 ```
 
-1. [Qtile](http://www.qtile.org/)
+2. [Qtile](http://www.qtile.org/)
 
 It is a window-manager written in Python, and is also very customizable. It comes with a bar(title-bar) out of the box, thus you don't have to use external programs for bar like `Polybar`.
 
@@ -45,7 +45,7 @@ It is a window-manager written in Python, and is also very customizable. It come
 $ sudo apt-get install qtile
 ```
 
-1. [Picom](https://github.com/yshui/picom)
+3. [Picom](https://github.com/yshui/picom)
 
 Generally in a stand alone window manager, we need a compositor for drawing the windows, and with blur. To do all those fancy things, we can use the compositor Picom.
    
@@ -67,7 +67,7 @@ After building, we can install it using ninja with this following command.
 $ ninja -C build install
 ```
 
-1. [Polybar](https://github.com/polybar/polybar)
+4. [Polybar](https://github.com/polybar/polybar)
 
 It draws a bar at the top/bottom of th screen, such that we can show widgets and workspaces.
 
@@ -75,7 +75,7 @@ It draws a bar at the top/bottom of th screen, such that we can show widgets and
 $ sudo apt install polybar
 ```
 
-1. [Rofi](http://manpages.ubuntu.com/manpages/groovy/man1/rofi.1.html)
+5. [Rofi](http://manpages.ubuntu.com/manpages/groovy/man1/rofi.1.html)
 
 It is a Apllication launcher for fast traversal from one application to another. The most minimal application launcher is Dmenu, but it is very mininmal, so we don't get all the basic functionalities. Thus i switched to Rofi.
 
@@ -110,7 +110,7 @@ I use [vundle](https://github.com/VundleVim/Vundle.vim) with the neovim for mana
 ```shell
 $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 ```
-1. [startship](https://starship.rs/)
+9. [startship](https://starship.rs/)
 
 The terminal prompt is a very essential thing to people who spend most of their time in the terminal. If u like a very customizable and hackable prompt, that too with 3-4 lines of code. Then go no further, starship is what you need.
 
