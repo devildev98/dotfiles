@@ -20,7 +20,7 @@ error_symbol = "[✖](#9A5590)"
 vicmd_symbol = "[V](bold green) "
 
 [directory]
-format = "[$path]($style)[$read_only]($read_only_style)" 
+format = "[$path ]($style)[$read_only]($read_only_style)" 
 
 [[battery.display]]
 threshold = 50
@@ -28,3 +28,12 @@ style = "bold red"
 
 [python]
 python_binary = "python3"
+
+[time]
+disabled = true
+time_format = "%R %P"
+format = '🕙[ $time]($style) '
+
+[conda]
+ignore_base = false
+format = "$symbol$environment "
