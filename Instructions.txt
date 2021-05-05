@@ -1,0 +1,19 @@
+Instructions
+-------------
+sudo apt install xorg compton nitrogen suckless-tools build-essential libx11-dev libxinerama libxft-dev git neovim
+cd Downloads
+git clone https://github.com/devildev98/dotfiles.git
+cd dotfiles
+cp -r src/* dwm ~/.local/src/
+cp setbg ~/.local/bin
+
+
+.bash_profile
+--------------
+startx
+
+.xinitrc
+-----------
+compton &
+xrandr -s 1020x1080
+exec dwm

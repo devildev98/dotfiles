@@ -1,0 +1,13 @@
+#! /bin/bash
+###################
+# DEBARGHYA DATTA #
+###################
+
+#gsettings get org.gnome.desktop.wm.preferences button-layout 'appmenu:close'
+layout=$(gsettings get org.gnome.desktop.wm.preferences button-layout)
+
+if [  $layout = "''" ]; then
+    gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:close'
+else
+    gsettings set org.gnome.desktop.wm.preferences button-layout ''
+fi
