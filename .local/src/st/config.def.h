@@ -1,13 +1,22 @@
-/* See LICENSE file for copyright and license details. */
+/*  ____ _____  */
+/* |  _ \_   _|  Derek Taylor (DistroTube) */
+/* | | | || |  	 http://www.youtube.com/c/DistroTube */
+/* | |_| || |  	 http://www.gitlab.com/dwt1/ */
+/* |____/ |_|  	 */ 
 
-/*
- * appearance
- *
- * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+/* See LICENSE file for copyright and license details. */
+/* appearance */
+
+/* Your default font will be Hack which is found in the standard
+ * Arch repos and is listed as a dependency for this build. JoyPixels is also
+ * a hard dependency and makes colored fonts and emojis possible.
  */
-static char *font = "FiraCode Nerd Font:pixelsize=20:antialias=true:autohint=true";
+static char *font = "Hack:pixelsize=20:antialias=true:autohint=true";
+static char *font2[] = { 
+    "JoyPixels:pixelsize=20:antialias=true:autohint=true",
+};
 static int borderpx = 2;
-float alpha = 0.8;
+
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -19,7 +28,7 @@ float alpha = 0.8;
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
-char *scroll = "scroll";
+char *scroll = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -93,45 +102,49 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-#include "/home/devildev/.cache/wal/colors-wal-st.h"
-// /* Terminal colors (16 first used in escape sequence) */
-// static const char *colorname[] = {
-// 	/* 8 normal colors */
-// 	"black",
-// 	"red3",
-// 	"green3",
-// 	"yellow3",
-// 	"blue2",
-// 	"magenta3",
-// 	"cyan3",
-// 	"gray90",
+/* bg opacity */
+float alpha = 0.90;
 
-// 	/* 8 bright colors */
-// 	"gray50",
-// 	"red",
-// 	"green",
-// 	"yellow",
-// 	"#5c5cff",
-// 	"magenta",
-// 	"cyan",
-// 	"white",
+/* Terminal colors (16 first used in escape sequence) */
+/* Colorscheme based on the 'Doom One' theme from Doom Emacs */
+static const char *colorname[] = {
+	/* 8 normal colors */
+	"#1c1f24",
+	"#ff6c6b",
+	"#98be65",
+	"#da8548",
+	"#51afef",
+	"#c678dd",
+	"#5699af",
+	"#202328",
 
-// 	[255] = 0,
+	/* 8 bright colors */
+	"#5b6268",
+	"#da8548",
+	"#4db5bd",
+	"#ecbe7b",
+	"#3071db",
+	"#a9a1e1",
+	"#46d9ff",
+	"#dfdfdf",
 
-// 	/* more colors can be added after 255 to use with DefaultXX */
-// 	"#cccccc",
-// 	"#555555",
-// };
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#282c34",
+	"#bbc2cf",
+	"#d7d7d7",
+};
 
 
-// /*
-//  * Default colors (colorname index)
-//  * foreground, background, cursor, reverse cursor
-//  */
-// unsigned int defaultfg = 7;
-// unsigned int defaultbg = 0;
-// static unsigned int defaultcs = 256;
-// static unsigned int defaultrcs = 257;
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 15;
 
 /*
  * Default shape of cursor
@@ -175,6 +188,8 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 3},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 3},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -184,7 +199,7 @@ static MouseShortcut mshortcuts[] = {
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
-#define TERMMOD (Mod1Mask|ShiftMask)
+#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -192,14 +207,16 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_K,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_J,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
+	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
+	{ TERMMOD,              XK_U,           zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*

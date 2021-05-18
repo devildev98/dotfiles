@@ -1,0 +1,3 @@
+[Added Associations]
+audio/mpeg=qv4l2.desktop;
+application/octet-stream=nvim.desktop;

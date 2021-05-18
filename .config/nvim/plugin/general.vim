@@ -14,6 +14,7 @@ set clipboard=unnamedplus       " Copy/paste between vim and other programs
 set pumheight=10                " Makes Popup smaller
 set conceallevel=0              " Show `` in Markdown
 set ruler
+set nowrap
 set background=dark
 let g:rehsh256 = 1
 let mapleader = " "

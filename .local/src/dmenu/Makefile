@@ -29,7 +29,7 @@ stest: stest.o
 	$(CC) -o $@ stest.o $(LDFLAGS)
 
 clean:
-	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz
+	rm -f dmenu stest $(OBJ) dmenu-$(VERSION).tar.gz config.h *.rej *.orig
 
 dist: clean
 	mkdir -p dmenu-$(VERSION)
@@ -38,7 +38,7 @@ dist: clean
 		dmenu-$(VERSION)
 	tar -cf dmenu-$(VERSION).tar dmenu-$(VERSION)
 	gzip dmenu-$(VERSION).tar
-	rm -rf dmenu-$(VERSION) config.h
+	rm -rf dmenu-$(VERSION)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin

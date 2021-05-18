@@ -31,8 +31,9 @@ end
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
 
-### Ufetch ###
-#ufetch-popos
+### pfetch ###
+pfetch | lolcat
+# alacritty-pywal &
 
 ### EXPORT ###
 set fish_greeting                      # Supresses fish's intro message
@@ -68,6 +69,7 @@ alias .5='cd ../../../../..'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias v='nvim'
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -81,17 +83,12 @@ alias free='free -m'                      # show sizes in MB
 alias py='python3'
 
 # config files
-alias fishconf='vim ~/.config/fish/config.fish'
-alias kittyconf='vim ~/.config/kitty/kitty.conf'
-alias vimconf='vim ~/.config/nvim/init.vim'
+alias fishconf='nvim ~/.config/fish/config.fish'
+alias kittyconf='nvim ~/.config/kitty/kitty.conf'
+alias vimconf='nvim ~/.config/nvim/init.vim'
 
 # youtube-dl alias
 alias ytm='youtube-dl -x --audio-format mp3 --audio-quality 320k  -o "~/Music/%(title)s.%(ext)s"'
 alias ytmdl='ytmdl --ignore-errors'
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /home/devildev/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
+alias mpv='devour mpv'
+alias ytdl='youtube-dl'
