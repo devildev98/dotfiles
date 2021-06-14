@@ -1,0 +1,18 @@
+#!/bin/sh
+
+wall=$(sxiv -ot ~/Pictures/*jpg)
+if [[ ${#wall} -eq 0 ]]
+then
+	wall=$(find $HOME/Pictures -type f | shuf -n 1)
+fi
+echo $wall
+wal -sti "$wall" -n 2>/dev/null
+# sed -it 'N;$!P;D' $HOME/.cache/wal/colors-wal-dwm.h
+sed -it '11q' $HOME/.cache/wal/colors-wal-dwm.h
+sed -it '28q' $HOME/.cache/wal/colors-wal-st.h
+(cd $HOME/.local/src/dwm &&  make clean install > /dev/null)
+(cd $HOME/.local/src/st &&  make clean install > /dev/null)
+(cd $HOME/.local/src/dmenu && make clean install > /dev/null) 
+nitrogen --set-scaled $wall --save 2>/dev/null
+kill -HUP "$(pidof dwm)"
+notify-send --icon=$wall "Wallpaper and Pallate Updated"

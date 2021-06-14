@@ -107,34 +107,33 @@ float alpha = 0.90;
 
 /* Terminal colors (16 first used in escape sequence) */
 /* Colorscheme based on the 'Doom One' theme from Doom Emacs */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"#1c1f24",
-	"#ff6c6b",
-	"#98be65",
-	"#da8548",
-	"#51afef",
-	"#c678dd",
-	"#5699af",
-	"#202328",
 
-	/* 8 bright colors */
-	"#5b6268",
-	"#da8548",
-	"#4db5bd",
-	"#ecbe7b",
-	"#3071db",
-	"#a9a1e1",
-	"#46d9ff",
-	"#dfdfdf",
+#include "/home/devildev/.cache/wal/colors-wal-st.h"						     	
+/* static const char *colorname[] = { */
+/*   /1* 8 normal colors *1/ */
+/*   [0] = "#272822", /1* black   *1/ */
+/*   [1] = "#f92672", /1* red     *1/ */
+/*   [2] = "#a6e22e", /1* green   *1/ */
+/*   [3] = "#f4bf75", /1* yellow  *1/ */
+/*   [4] = "#66d9ef", /1* blue    *1/ */
+/*   [5] = "#ae81ff", /1* magenta *1/ */
+/*   [6] = "#a1efe4", /1* cyan    *1/ */
+/*   [7] = "#f8f8f2", /1* white   *1/ */
 
-	[255] = 0,
+/*   /1* 8 bright colors *1/ */
+/*   [8]  = "#75715e", /1* black   *1/ */
+/*   [9]  = "#f92672", /1* red     *1/ */
+/*   [10] = "#a6e22e", /1* green   *1/ */
+/*   [11] = "#f4bf75", /1* yellow  *1/ */
+/*   [12] = "#66d9ef", /1* blue    *1/ */
+/*   [13] = "#ae81ff", /1* magenta *1/ */
+/*   [14] = "#a1efe4", /1* cyan    *1/ */
+/*   [15] = "#f9f8f5", /1* white   *1/ */
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#282c34",
-	"#bbc2cf",
-	"#d7d7d7",
-};
+/*   /1* special colors *1/ */
+/*   [256] = "#272822", /1* background *1/ */
+/*   [257] = "#f8f8f2", /1* foreground *1/ */
+/* }; */
 
 
 /*

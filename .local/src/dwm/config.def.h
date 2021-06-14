@@ -22,11 +22,11 @@ static const char *fonts[]     = {"FiraCode Nerd Font:size=14:antialias=true:aut
 /* static const char col_2[]  = "#282c34"; /1* border color unfocused windows *1/ */
 /* static const char col_3[]  = "#d7d7d7"; */
 /* static const char col_4[]  = "#924441"; /1* border color focused windows and tags *1/ */
-/* static const char *colors[][3]        = { */
-/*  	/1*               fg         bg         border   *1/ */
-/* 	[SchemeNorm] = { norm_fg,  norm_bg, norm_border }, */
-/* 	[SchemeSel]  = { sel_bg,   norm_bg,  sel_border }, */
-/* }; */
+static const char *colors[][3]        = {
+ 	/*               fg         bg         border   */
+	[SchemeNorm] = { norm_fg,  norm_bg, norm_border },
+	[SchemeSel]  = { sel_bg,   norm_bg,  sel_border },
+};
 
 /* bar opacity 
  * 0xff is no transparency.
@@ -56,7 +56,7 @@ static const Rule rules[] = {
 	{ "Gimp",         NULL,       NULL,       3,               1,           -1 },
 	{ "firefox",      NULL,       NULL,       2,               0,           -1 },
 	{ "st",           NULL,       NULL,       1,               0,           -1 },
-	{ "Pcmanfm",      NULL,       NULL,       4,               0,           -1 },
+	{ "Thunar",       NULL,       NULL,       4,               0,           -1 },
 };
 
 /* layout(s) */
@@ -148,7 +148,7 @@ static Key keys[] = {
 	
     /* Keybindings for programs using the format SUPER + ALT + "key" */
 	{ MODKEY|Mod1Mask,      -1,        XK_b,      spawn,          CMD("firefox") },
-	{ MODKEY|Mod1Mask,      -1,        XK_f,      spawn,          CMD("pcmanfm") },
+	{ MODKEY|Mod1Mask,      -1,        XK_f,      spawn,          CMD("thunar") },
 	{ MODKEY|Mod1Mask,      -1,        XK_m,      spawn,           { .v= music } },
 	
     /* Dmenu scripts launched with emacs-style keychords SUPER + s followed by "key" */
@@ -159,6 +159,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_s,      XK_m,      spawn,          CMD("dm-music") },
 	{ MODKEY,               XK_s,      XK_u,      spawn,          CMD("dm-pacman") },
 	{ MODKEY,               XK_s,      XK_s,      spawn,          CMD("dmsearch") },
+	{ MODKEY,               XK_s,      XK_b,      spawn,          CMD("setwall") },
     
 	TAGKEYS(                -1,        XK_1,                      0)
 	TAGKEYS(                -1,        XK_2,                      1)

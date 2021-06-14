@@ -4,6 +4,7 @@ VERSION = 0.8.4
 # Customize below to fit your system
 
 # paths
+# PREFIX = /usr/local
 PREFIX = /home/devildev/.local
 MANPREFIX = $(PREFIX)/share/man
 
