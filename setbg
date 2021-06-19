@@ -2,7 +2,8 @@
 
 wall=$(find $HOME/Pictures -type f | shuf -n 1)
 wal -i $wall >/dev/null
-sed -i 'N;$!P;D' $HOME/.cache/wal/color-wal-dwm.h
+sed -i 'N;$!P;D' $HOME/.cache/wal/colors-wal-dwm.h
+nitrogen --set-scaled $wall
 (cd $HOME/.local/src/dwm && sudo make clean install > /dev/null)
 (cd $HOME/.local/src/dmenu && sudo make clean install > /dev/null)
 (cd $HOME/.local/src/st && sudo make clean install > /dev/null)

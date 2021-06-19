@@ -1,12 +1,17 @@
 Instructions
 -------------
-sudo apt install xorg compton nitrogen suckless-tools build-essential libx11-dev libxinerama libxft-dev git neovim
+sudo apt install xorg compton nitrogen suckless-tools build-essential libx11-dev libxinerama libxft-dev git neovim python3-pip imagemagick
+pip3 install pywal
 cd Downloads
 git clone https://github.com/devildev98/dotfiles.git
 cd dotfiles
-cp -r src/* dwm ~/.local/src/
-cp setbg ~/.local/bin
+cp wallpapers/* ~/Pictures/
+cp -r src/* ~/.local/src/
 
+
+.bashrc
+--------
+PATH=/home/devildev/devildev/.local/bin:$PATH
 
 .bash_profile
 --------------
