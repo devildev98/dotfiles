@@ -1,6 +1,6 @@
 [global]
     follow = mouse
-    geometry = "300x60-10+10"
+    geometry = "300x60-10+34"
     progress_bar = true
     progress_bar_height = 10
     progress_bar_frame_width = 1

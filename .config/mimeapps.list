@@ -1,3 +1,17 @@
 [Added Associations]
-audio/mpeg=qv4l2.desktop;
+audio/mpeg=mpv.desktop;qv4l2.desktop;
 application/octet-stream=nvim.desktop;
+image/png=sxiv.desktop;firefox.desktop;
+application/xml=nvim.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/zip=userapp-unzip %f-JF5K60.desktop;
+image/jpeg=sxiv.desktop;
+text/x-csrc=code-oss.desktop;
+application/json=code-oss.desktop;
+text/x-chdr=code-oss.desktop;
+application/x-shellscript=code-oss.desktop;
+
+[Default Applications]
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+text/x-csrc=code-oss.desktop
+application/json=code-oss.desktop

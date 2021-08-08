@@ -5,11 +5,13 @@
 /* appearance */
 static const unsigned int borderpx = 2;   /* border pixel of windows */
 static const unsigned int snap     = 32;  /* snap pixel */
-static const unsigned int gappx    = 6;   /* pixel gap between clients */
+static const unsigned int gappx    = 2;   /* pixel gap between clients */
 static const int showbar           = 1;   /* 0 means no bar */
-static const int topbar            = 0;   /* 0 means bottom bar */
-static const int horizpadbar       = 6;   /* horizontal padding for statusbar */
-static const int vertpadbar        = 7;   /* vertical padding for statusbar */
+static const int topbar            = 1;   /* 0 means bottom bar */
+static const int horizpadbar       = 0;   /* horizontal padding for statusbar */
+static const int vertpadbar        = 0;   /* vertical padding for statusbar */
+static const int vertpad            = 5;       /* vertical padding of bar */
+static const int sidepad            = 5;       /* horizontal padding of bar */
 static const char *fonts[]     = {"FiraCode Nerd Font:size=14:antialias=true:autohint=true",
                                   "Hack:size=8:antialias=true:autohint=true",
                                   "JoyPixels:size=10:antialias=true:autohint=true"
@@ -22,6 +24,11 @@ static const char *fonts[]     = {"FiraCode Nerd Font:size=14:antialias=true:aut
 /* static const char col_2[]  = "#282c34"; /1* border color unfocused windows *1/ */
 /* static const char col_3[]  = "#d7d7d7"; */
 /* static const char col_4[]  = "#924441"; /1* border color focused windows and tags *1/ */
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
 static const char *colors[][3]        = {
  	/*               fg         bg         border   */
 	[SchemeNorm] = { norm_fg,  norm_bg, norm_border },
@@ -45,7 +52,12 @@ static const unsigned int alphas[][3] = {
 /* tagging */
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
-static const char *tags[] = { "", "", "", " ", "" };
+static const char *tags[] = { "", "", "", "", "" };
+
+static const unsigned int ulinepad	= 7;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -67,10 +79,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-        { "節",      tile },    /* first entry is default */
-	{ "﩯",      grid },    /* Grid Layout */
-	{ "",      monocle },  /* Full Screen or Monocle */
-        { " ",      NULL },    /* no layout function means floating behavior */
+        { "| 節 Tile |",      tile },    /* first entry is default */
+	{ "| 﩯 Grid |",      grid },    /* Grid Layout */
+	{ "|  Monocle |",      monocle },  /* Full Screen or Monocle */
+        { "|  Float |",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
@@ -89,14 +101,14 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* If you are using the standard dmenu program, use the following. */
-static const char *dmenucmd[]    = { "dmenu_run", "-i", NULL };
+/* static const char *dmenucmd[]    = { "dmenu_run", "-i", NULL }; */
 /* If you are using the dmenu-distrotube-git program, use the following for a cooler dmenu! */
-/* static const char *dmenucmd[]    = { "dmenu_run", "-g", "10", "-l", "48", "-p", "Run: ", NULL }; */
+static const char *dmenucmd[]    = { "dmenu_run", "-g", "4", "-l", "4", "-c", NULL };
 
 /* the st terminal with fish */
 static const char *termcmd[]     = { "st", "-e", "fish" };
 /* Alacritty Terminal */
-static const char *alacmd[]     = { "alacritty", NULL };
+static const char *alacmd[]     = { "alacritty", "-e", "zsh" };
 static const char *music[]     = { "st", "-e" "ncmpcpp" };
 /* volume up and down */
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
@@ -194,5 +206,4 @@ static Button buttons[] = {
 	{ ClkTagBar,       MODKEY,      Button1,        tag,            {0} },
 	{ ClkTagBar,       MODKEY,      Button3,        toggletag,      {0} },
 };
-
 

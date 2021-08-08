@@ -1,0 +1,11 @@
+{
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
+    "editor.fontFamily": "'Hack Nerd Font', 'JoyPixels', monospace, 'Droid Sans Fallback'",
+    "debug.terminal.clearBeforeReusing": true,
+    "terminal.external.linuxExec": "st",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.linux": "fish"
+}

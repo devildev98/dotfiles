@@ -15,9 +15,10 @@ add_newline = true
 disabled = true
 
 [character]     
- success_symbol = "[❯](#636DB0)[❯](#F2BF1E)[❯](#3BAD9A)"     
-error_symbol = "[✖](#9A5590)"
-vicmd_symbol = "[V](bold green) "
+ # success_symbol = "[❯](#636DB0)[❯](#F2BF1E)[❯](#3BAD9A)"     
+ success_symbol = "[❯](#3bad9a)"     
+ error_symbol = "[](#f64747)" # ﰸ
+ vicmd_symbol = "[V](bold green) "
 
 [directory]
 format = "[$path ]($style)[$read_only]($read_only_style)" 

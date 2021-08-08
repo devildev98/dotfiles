@@ -10,6 +10,7 @@
 ;   https://github.com/jaagr/polybar/wiki/Formatting
 ;
 ;=====================================================
+;vim:ft=cfg
 
 [global/wm]
 ;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
@@ -70,11 +71,77 @@ volume-max = #bf616a
 
 ################################################################################
 ################################################################################
+################################################################################
+############                       MAINBAR-DWM                    ############
+################################################################################
+################################################################################
+
+[bar/dwmbar]
+; = ${env:MONITOR:fallback-value}
+monitor = ${env:MONITOR:VGA-1}
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false
+separator = |
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+;format-underline = #3EC13F
+
+
+;line-size = 4
+;line-color = #aa[rrggbb]
+
+;wm-restack = qtile
+override-redirect = true
+enable-ipc = true
+
+border-size = 0
+;border-left-size = 0
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 3
+module-margin-right = 3
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = Hack-Regular:size=10;0
+font-1 = Noto Sans-regular:size=16:0
+font-2 = JoyPixels-Regular: size=10;0
+
+modules-left =   ewmh 
+modules-center = weather
+modules-right = memory2 cpu date 
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-position = right
+tray-padding = 2
+tray-maxsize = 50
+tray-scale = 1.0
+tray-transparent = true
+tray-background = #00000000
+
+;scroll-up = 
+;scroll-down = 
+
+################################################################################
+################################################################################
 ############                       MAINBAR-QTILE                    ############
 ################################################################################
 ################################################################################
 
-[bar/mainbar-qtile]
+[bar/qtilebar]
 ; = ${env:MONITOR:fallback-value}
 monitor = ${env:MONITOR:VGA-1}
 width = 100%
@@ -241,11 +308,11 @@ animation-charging-framerate = 750
 
 ################################################################################
 
-[module/compton]
+[module/picom]
 ;https://github.com/jaagr/polybar/wiki/User-contributed-modules#compton
 type = custom/script
-exec = ~/.config/polybar/scripts/compton.sh
-click-left = ~/.config/polybar/scripts/compton-toggle.sh
+exec = ~/.config/polybar/scripts/picom.sh
+click-left = ~/.config/polybar/scripts/picom-toggle.sh
 interval = 5
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}

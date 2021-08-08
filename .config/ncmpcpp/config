@@ -33,9 +33,9 @@ now_playing_prefix      = "$b"
 now_playing_suffix      = "$/b"
 
 [statusbar]
-progressbar_look = "━━━"
+# progressbar_look = "━━━"
 # progressbar_look = "━━"
-# progressbar_look = "━━─"
+progressbar_look = "━━─"
 progressbar_color = "black"
 progressbar_elapsed_color= "blue"
 statusbar_visibility = "yes"
@@ -43,8 +43,6 @@ statusbar_color = "magenta"
 song_status_format = "{%t - %a}"
 
 # appearance
-# selected_item_prefix = "$6"
-# selected_item_suffix = "$9"
 browser_display_mode = "columns" #(classic/columns)
 autocenter_mode = "yes"
 user_interface = "classic" #(classic/alternative)
@@ -55,8 +53,6 @@ display_remaining_time = "no"
 # colors
 colors_enabled = "yes"
 main_window_color = "blue"
-# color1 = "red"
-# color2 = "magenta"
 
 # more stuff
 playlist_disable_highlight_delay = "3"
@@ -74,3 +70,6 @@ empty_tag_color = default
 
 [notification]
 execute_on_song_change = notify-send --icon=~/.config/ncmpcpp/music.png "$(mpc current)"
+
+
+# vim: ft=cfg

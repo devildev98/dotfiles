@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2034
-# This issue is ignored because it is part of a larger file that calls upon all variables listed
-
-# To edit this file copy it to `${HOME}/.config/dmscripts/config`
-# `cp /etc/dmscripts/config ${HOME}/.config/dmscripts/config`
 
 # Defined variables, modify anything in quotes to your prefered software
 DMEDITOR="st -e nvim"
@@ -16,7 +11,7 @@ DMWALLPAPERDIR="${HOME}/Pictures"
 LOCKER='slock'
 NOTIFIER='notify-send'
 DMHUB_DIR="${HOME}/git"
-soundDir="${HOME}/.config/dmscripts/dmsounds"
+soundDir="${HOME}/Music"
 
 # dmconf config
 
@@ -24,14 +19,14 @@ soundDir="${HOME}/.config/dmscripts/dmsounds"
 # You can edit this list to add/remove config files.
 declare -A dmconf_options
 dmconf_options[alacritty]="$HOME/.config/alacritty/alacritty.yml"
-dmconf_options[dmscripts]="$HOME/.config/dmscripts/config"
 dmconf_options[awesome]="$HOME/.config/awesome/rc.lua"
 dmconf_options[bash]="$HOME/.bashrc"
 dmconf_options[broot]="$HOME/.config/broot/conf.toml"
 dmconf_options[bspwm]="$HOME/.config/bspwm/bspwmrc"
+dmconf_options[dmenu]="$HOME/.local/src/dmenu/config.def.h"
+dmconf_options[dmscripts]="$HOME/.config/dmscripts/config"
 dmconf_options[dunst]="$HOME/.config/dunst/dunstrc"
 dmconf_options[dwm]="$HOME/.local/src/dwm/config.def.h"
-dmconf_options[dmenu]="$HOME/.local/src/dmenu/config.def.h"
 dmconf_options[dwmblocks]="$HOME/dwmblocks-distrotube/blocks.def.h"
 dmconf_options[fish]="$HOME/.config/fish/config.fish"
 dmconf_options[herbstluftwm]="$HOME/.config/herbstluftwm/autostart"
@@ -41,11 +36,13 @@ dmconf_options[picom]="$HOME/.config/picom/picom.conf"
 dmconf_options[polybar]="$HOME/.config/polybar/config"
 dmconf_options[qtile]="$HOME/.config/qtile/config.py"
 dmconf_options[qutebrowser bookmarks]="$HOME/.config/qutebrowser/bookmarks/urls"
-dmconf_options[qutebrowser quickmarks]="$HOME/.config/qutebrowser/quickmarks"
 dmconf_options[qutebrowser config.py]="$HOME/.config/qutebrowser/config.py"
+dmconf_options[qutebrowser quickmarks]="$HOME/.config/qutebrowser/quickmarks"
+dmconf_options[slstatus]="$HOME/.local/src/slstatus/config.def.h"
 dmconf_options[spectrwm]="$HOME/.spectrwm.conf"
 dmconf_options[ssh]="$HOME/.ssh/config"
-dmconf_options[st]="$HOME/st-distrotube/config.def.h"
+dmconf_options[st]="$HOME/.local/src/st/config.def.h"
+dmconf_options[starship]="$HOME/.config/starship.toml"
 dmconf_options[stumpwm]="$HOME/.config/stumpwm/config"
 dmconf_options[surf]="$HOME/surf-distrotube/config.def.h"
 dmconf_options[sxhkd]="$HOME/.config/sxhkd/sxhkdrc"
@@ -53,10 +50,9 @@ dmconf_options[tabbed]="$HOME/tabbed-distrotube/config.def.h"
 dmconf_options[termite]="$HOME/.config/termite/config"
 dmconf_options[vifm]="$HOME/.config/vifm/vifmrc"
 dmconf_options[vim]="$HOME/.vimrc"
-dmconf_options[slstatus]="$HOME/.local/src/slstatus/config.def.h"
 dmconf_options[xinitrc]="$HOME/.xinitrc"
 dmconf_options[xresources]="$HOME/.Xresources"
-dmconf_options[zsh]="$HOME/.zshrc"
+dmconf_options[zsh]="$HOME/.config/zsh/.zshrc"
 
 # dmred config
 

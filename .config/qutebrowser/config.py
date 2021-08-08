@@ -1,6 +1,7 @@
 import subprocess
 import os
 from qutebrowser.api import interceptor
+import dracula.draw
 
 """
 qutebrowser settings for video
@@ -164,3 +165,12 @@ if xresources["*.background"] != "#ffffff":
     c.hints.border = "1px solid #FFFFFF"
 
 # }}}
+
+
+# Dracula theme
+dracula.draw.blood(c, {
+    'spacing': {
+        'vertical': 6,
+        'horizontal': 8
+    }
+})

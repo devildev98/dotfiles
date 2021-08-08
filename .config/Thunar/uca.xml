@@ -4,10 +4,26 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1623519109497802-1</unique-id>
-	<command>st</command>
+	<command>st -e fish</command>
 	<description>Example for a custom action</description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open In Vscode</name>
+	<unique-id>1627820227124877-1</unique-id>
+	<command>code  %D</command>
+	<description>Open this folder in vscode</description>
+	<patterns>*</patterns>
+</action>
+<action>
+	<icon>archive-extract</icon>
+	<name>Unzip here</name>
+	<unique-id>1627116493339800-1</unique-id>
+	<command>unzip %f</command>
+	<description>extract the file</description>
+	<patterns>*</patterns>
 </action>
 </actions>

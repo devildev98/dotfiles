@@ -1,46 +1,50 @@
+# vim:fileencoding=utf-8:ft=conf
+
+
 set selection-clipboard clipboard
-set font "Ubuntu 10"
-# set recolor true
-set page-padding 1
-set statusbar-v-padding 2
-set statusbar-h-padding 20 
+set smooth-scroll "true"
+set guioptions none
+set highlight-active-color "#C3AFF7"
+set font "JetBrainsMono Nerd Font Mono Bold 9"
 
-# # https://github.com/lighthaus-theme/zathura
+#colorscheme
 
-# set notification-error-bg       "#FC2929" 
-# set notification-error-fg       "#18191E" 
-# set notification-warning-bg     "#E25600" 
-# set notification-warning-fg     "#18191E" 
-# set notification-bg             "#D68EB2" 
-# set notification-fg             "#18191E" 
+set default-bg                  "#1e212a"
+set default-fg                  "#D8DEE9"
 
-# set completion-bg               "#18191E" 
-# set completion-fg               "#44B273" 
-# set completion-group-bg         "#18191E" 
-# set completion-group-fg         "#44B273" 
-# set completion-highlight-bg     "#21252D" 
-# set completion-highlight-fg     "#FFFF00" 
+set statusbar-fg                "#a7bdfb"
+set statusbar-bg                "#272c38"
 
-# set index-bg                    "#18191E" 
-# set index-fg                    "#44B273" 
-# set index-active-bg             "#21252D" 
-# set index-active-fg             "#FFFF00" 
+set inputbar-bg                 "#272c38" 
+set inputbar-fg                 "#BF616A"
 
-# set inputbar-bg                 "#21252D" 
-# set inputbar-fg                 "#FFFADE" 
-# set statusbar-bg                "#21252D" 
-# set statusbar-fg                "#D68EB2" 
+set notification-warning-bg     "#EBCB8B"
+set notification-warning-fg     "#272c38"
 
-# set highlight-color             "#D68EB2" 
-# set highlight-active-color      "#ff79c6" 
+set highlight-color             "#81A1C1"
+set highlight-active-color      "#81A1C1"
 
-# set default-bg                  "#18191E" 
-# set default-fg                  "#FFEE79" 
+set completion-highlight-fg     "#BF616A"
+set completion-highlight-bg     "#272c38"
 
-# set render-loading              true
-# set render-loading-fg           "#FFEE79" 
-# set render-loading-bg           "#18191E" 
+set completion-bg               "#20242d"
+set completion-fg               "#D8DEE9" 
 
-# # Recolor mode settings
-# set recolor-lightcolor          "#21252D" 
-# set recolor-darkcolor           "#FFEE79"
+set notification-bg             "#D8DEE9"
+set notification-fg             "#20242d"
+
+set recolor-darkcolor 			"#D8DEE9" 
+set recolor-lightcolor          "#20242d"
+set recolor                     "true"
+
+# setting recolor-keep true will keep any color your pdf has.
+# if it is false, it'll just be black and white
+set recolor-keephue             "true"
+
+set adjust-open "width"
+
+set window-title-home-tilde "true"
+set statusbar-basename "true"
+
+set window-height 760
+set window-width 794

@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Environment variables set everywhere
+export LANG=en_US.utf8
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+# Set the Path Variable
+# [[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -d ~/.local ]] && PATH=$HOME/.local:$PATH
+[[ -d ~/.local/bin ]] && PATH=$HOME/.local/bin:$PATH
+
+
+# zsh config dir
+export ZDOTDIR=$HOME/.config/zsh
+
+# Load programs
+# slstatus &
+dwmblocks &
+thunar --daemon &
+nitrogen --restore &
+xrandr -s 1920x1080
+mpd > /dev/null 2>&1 &
+picom > /dev/null 2>&1 &
+dunst > /dev/null 2>&1 &
