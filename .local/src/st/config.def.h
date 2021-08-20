@@ -1,21 +1,13 @@
-/*  ____ _____  */
-/* |  _ \_   _|  Derek Taylor (DistroTube) */
-/* | | | || |  	 http://www.youtube.com/c/DistroTube */
-/* | |_| || |  	 http://www.gitlab.com/dwt1/ */
-/* |____/ |_|  	 */ 
-
-/* See LICENSE file for copyright and license details. */
-/* appearance */
-
 /* Your default font will be Hack which is found in the standard
  * Arch repos and is listed as a dependency for this build. JoyPixels is also
  * a hard dependency and makes colored fonts and emojis possible.
  */
-static char *font = "Hack:pixelsize=20:antialias=true:autohint=true";
+  
+static char *font = "Hack Nerd Font:pixelsize=20:antialias=true:autohint=true";
 static char *font2[] = { 
-    "JoyPixels:pixelsize=20:antialias=true:autohint=true",
+    "JoyPixels:pixelsize=18:antialias=true:autohint=true",
 };
-static int borderpx = 2;
+static int borderpx = 5;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -24,7 +16,7 @@ static int borderpx = 2;
  * 3: SHELL environment variable
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
- */
+*/
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
@@ -109,7 +101,7 @@ float alpha = 0.90;
 /* Colorscheme based on the 'Doom One' theme from Doom Emacs */
 
 #include "/home/devildev/.cache/wal/colors-wal-st.h"						     	
-/* static const char *colorname[] = { */
+/* const char *colorname[] = { */
 /*   /1* 8 normal colors *1/ */
 /*   [0] = "#272822", /1* black   *1/ */
 /*   [1] = "#f92672", /1* red     *1/ */
@@ -131,7 +123,7 @@ float alpha = 0.90;
 /*   [15] = "#f9f8f5", /1* white   *1/ */
 
 /*   /1* special colors *1/ */
-/*   [256] = "#272822", /1* background *1/ */
+  /* [256] = "#1d1f21", /1* background *1/ */
 /*   [257] = "#f8f8f2", /1* foreground *1/ */
 /* }; */
 

@@ -65,11 +65,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function     format           argument */
-	{ battery_perc," %s%% ",         "BAT0"}, /*🔋*/
-	{ netspeed_tx,"直 %s",         "enp0s3"}, /*直🙌*/
-	{ run_command, "墳 %3s ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" }, /*墳🔊*/
-	{ cpu_perc, " %s%% ", 		NULL}, /*💽*/
-	{ ram_perc, "﫭 %s%% ", 		NULL}, /*﫭💾  */
-	{ datetime, " %s ",           "%I:%M %p" }, /*⏰ */
+        { separator,   "| ",                  NULL           },
+	{ battery_perc,"^c#93E9BE^ %s%% ^d^",         "BAT0"}, /*🔋*/
+	{ netspeed_tx, "^c#C26DBC^直  %s ^d^",         "enp0s3"}, /*直🙌*/
+	{ run_command, "^c#FFA384^墳 %3s ^d^", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" }, /*墳🔊*/
+        {run_command, "^c#FA26A0^ﮮ%2s ^d^", "checkupdates | wc -l" },
+	{ cpu_perc,   "^c#74BDCB^ %s%% ^d^", 		NULL}, /*💽*/
+	{ ram_perc,   "^c#FAD02C^﫭 %s%% ^d^", 		NULL}, /*﫭💾  */
+	{ datetime,   "^b#01949A^^c#CFE0EA^  %s ^d^",           "%I:%M %p" }, /*⏰ */
 
 };
