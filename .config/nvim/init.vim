@@ -25,6 +25,7 @@ Plug 'mhinz/vim-startify'                          " startify
 Plug 'jiangmiao/auto-pairs'                        " Auto-Pairs
 Plug 'tpope/vim-commentary'                        " Commentary
 Plug 'tpope/vim-fugitive'                          " Git Integration
+" Plug 'dracula/vim', { 'as': 'dracula' }            " Dracula Theme 
 
 call plug#end()            " required
 " Brief help
@@ -47,7 +48,6 @@ source ~/.config/nvim/plugin/startify.vim
 source ~/.config/nvim/plugin/color_theme.vim
 source ~/.config/nvim/plugin/general.vim
 source ~/.config/nvim/plugin/remaps.vim
-source ~/.config/nvim/plugin/coderunner.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 

@@ -21,11 +21,11 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ }
 " Always show statusline
 set laststatus=2
-set showtabline=2
+" set showtabline=2
 let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#show_number = 2
 let g:lightline#bufferline#unicode_symbols = 1

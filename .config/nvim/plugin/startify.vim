@@ -25,6 +25,6 @@ let g:startify_list_order = [
 let g:startify_bookmarks = [
 			\{'v': '~/.config/nvim/init.vim'},
 			\{'f': '~/.config/fish/config.fish'}, 
-			\{'k': '~/.config/kitty/kitty.conf'}
+			\{'t': '~/.config/alacritty/alacritty.conf'}
 			\]
 " vim:set et sw=2:

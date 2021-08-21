@@ -1,0 +1,10 @@
+cava
+checkupdates+aur
+devour
+lightdm-mini-greeter
+nerd-fonts-hack
+pandoc-bin
+paru-bin
+pfetch-git
+shell-color-scripts
+zoxide-git
