@@ -1,6 +1,5 @@
 .POSIX:
 
-# PREFIX = /usr/local
 PREFIX = $(HOME)/.local
 CC = gcc
 

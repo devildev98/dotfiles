@@ -1,20 +1,22 @@
 #!/bin/sh
 
 echo "It is a installation script 
-to installimportant packages and theme the softwares.
+to install important packages and theme the softwares.
 Enjoy - Devildev"
 
 pdir=$(pwd)
 
 echo "[INFO] Copying the Config files."
-if [[ -d ~/.config ]] then
+if [[ -d ~/.config ]]
+then
   cp -r .config/* ~/.config/
 else
   cp -r .config/ ~/
 fi
 
 echo "[INFO] Copying the binary files."
-if [[ -d ~/.local ]] then
+if [[ -d ~/.local ]]
+then
   cp -r .local/* ~/.local/
 else
   cp -r .local/ ~/
@@ -24,27 +26,28 @@ echo "[INFO] Copying the xprofile and xinitrc file."
 cp .xprofile .xinitrc ~/
 
 echo "[INFO] Copying the Wallpapers"
-[[ -d ~/Pictures ]] && cp wallpapers/* ~/Pictures/
-mkdir ~/Pictures && cp wallpapers/* ~/Pictures/
+[[ ! -d ~/Pictures ]] && mkdir ~/Pictures
+cp wallpapers/* ~/Pictures/
 
 echo "[INFO] Copying the Fonts."
-[[ -d ~/.local/share/fonts/ ]] && cp Fonts/* ~/.local/share/fonts/
-mkdir ~/.local/share/fonts && cp Fonts/* ~/.local/share/fonts/
+[[ ! -d ~/.local/share/fonts/ ]] && mkdir ~/.local/share/fonts
+cp Fonts/* ~/.local/share/fonts/
 fc-cache -f -v
 
 echo "[INFO] Copying the themes."
-[[ -d ~/.local/share/themses/ ]] && cp Arc-theme/ ~/.local/share/themes/
-mkdir ~/.local/share/themes && cp Arc-theme/ ~/.local/share/themes/
+[[ ! -d ~/.local/share/themses/ ]] && mkdir ~/.local/share/themes
+cp -r Arc-theme/ ~/.local/share/themes/
 
 echo "[INFO] Copying the Icon theme."
-[[ -d ~/.local/share/icons/ ]] && cp Flatery-Dark/ ~/.local/share/icons/
-mkdir ~/.local/share/icons && cp Flatery-Dark/ ~/.local/share/icons/
+[[ ! -d ~/.local/share/icons/ ]] && mkdir ~/.local/share/icons
+cp -r Flatery-Dark/ ~/.local/share/icons/
 
 echo "[INFO] Copying the Cursor theme."
-[[ -d ~/.local/share/icons/ ]] && cp matrial_cursors/* ~/.local/share/icons/
+[[ ! -d ~/.local/share/icons/ ]] && mkdir ~/.local/share/icons
+cp -r matrial_cursors/ ~/.local/share/icons/
 
 echo "[INFO] Installing pacman packages."
-sudo pacman -S --needed - < pacman.txt
+sudo pacman -Sy --needed - < pacman.txt
 
 echo "[INFO] Installing AUR helper."
 tmpdir=$(mktemp -d -t ci-xxx)
@@ -53,14 +56,14 @@ cd paru && makepkg -Si
 cd $pdir && rm -rf $tmpdir
 
 echo "[INFO] Installing AUR packages."
-paru -S --needed - < aur.txt
+paru -Sy --needed - < aur.txt
 
 ###############Suckless########################## 
 echo "[INFO] Installing Suckless utilities"
 
-echo "[INFO] Installing DWM and ST"
+echo "[INFO] Installing DWM, St, dmenu, DwmBlocks"
 cd ~/.local/src/dwm/ && make clean install
 cd ~/.local/src/st/ && make clean install
+cd ~/.local/src/dmenu/ && make clean install
+cd ~/.local/src/dwmblocks/ && make clean install
 
-echo "[INFO] Installing Slstatus"
-cd ~/.local/src/slstatus/ && sudo make clean install

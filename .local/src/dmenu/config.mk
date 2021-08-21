@@ -2,7 +2,7 @@
 VERSION = 5.0
 
 # paths
-PREFIX = /home/devildev/.local/
+PREFIX = /home/devildev/.local
 MANPREFIX = $(PREFIX)/share/man
 
 X11INC = /usr/X11R6/include

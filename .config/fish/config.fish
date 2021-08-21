@@ -101,7 +101,7 @@ set fish_color_param brcyan
 
 
 # Changing "ls" to "exa"
-alias ls='exa -a --color=always --group-directories-first --icons' # my preferred listing
+alias ls='exa -a' # my preferred listing
 alias la='exa -al --color=always --group-directories-first --icons'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first --icons'  # long format
 alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
